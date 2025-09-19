@@ -1,0 +1,227 @@
+<template>
+    <lightning-card>
+        <div slot="title"><lightning-icon icon-name="action:new_note" alternative-text="New note" size="small"
+                title="New note"></lightning-icon>  Intern Form <button type="submit" class="btn1" onclick={handleNew}>New</button></div>
+        <div class="slds-p-horizontal_small">
+            <div class="slds-p-around_medium search-cls">
+                <p class="search-text">Search Intern</p>
+                <div class="slds-p-around_medium">
+                    <p>Note: Please be aware that for the internship there is a selection process. Kindly fill out your
+                        basic details and answer the following questions to help us in the process. We request you to do
+                        some basic research about Goonj’s work and campaigns before writing your answers. These answers
+                        will reflect your thoughts, and you will be assessed based on the clarity of your thinking and
+                        your knowledge about Goonj. You may write your responses in either English or Hindi.</p>
+                </div>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-input type="email" label="Email" onchange={handleEmailSearch}></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-input type="tel" label="Phone" onchange={handlePhoneSearch}></lightning-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-cls">
+                    <button type="submit" class="btn" onclick={handleSearch}>Search</button>
+                </div>
+            </div>
+            <template if:true={showTable}>
+                <div class="slds-p-around_large">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Mobile
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={contacts} for:item="con">
+                                <tr key={con.Id}>
+                                    <td >
+                                        <p onclick={handleNameClick} data-id={con.Id}>{con.Name}</p>
+                                    </td>
+                                    <td>
+                                        {con.Email}
+                                    </td>
+                                    <td>
+                                        {con.Phone}
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <lightning-icon icon-name="utility:close" alternative-text="close" title="close" class="slds-button slds-button_icon slds-modal__close" onclick={handleCloseModal}></lightning-icon>
+                <!-- <button class="slds-button slds-button_icon slds-modal__close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button> -->
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Create New Intern</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-input label="Name" onchange={handleNameChange}></lightning-input>
+                    <lightning-input label="Email" onchange={handleEmailChange}></lightning-input>
+                    <lightning-input label="Phone" onchange={handlePhoneChange}></lightning-input>
+                    <!-- <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat
+                        veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud
+                        elit officia tempor esse quis. Cillum sunt ad dolore quis
+                        aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit
+                        dolor adipisicing.</p>
+                    <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim
+                        laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod
+                        pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud
+                        ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco
+                        mollit enim excepteur ea.</p> -->
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleCloseModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={handleInternDetails}>Save</button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+
+    <template if:true={showPopUp}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- <lightning-icon icon-name="utility:close" alternative-text="close" title="close" class="slds-button slds-button_icon slds-modal__close" onclick={handleCloseModal}></lightning-icon> -->
+                <!-- <button class="slds-button slds-button_icon slds-modal__close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button> -->
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate" tabindex="-1">Enter OTP</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p><strong>Please Enter the OTP which is sent on your email address.</strong></p>
+                    <lightning-input label="OTP" onchange={handleOTP}></lightning-input>
+                    
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleClosePopUp}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={handleOTPValidation}>Submit</button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+    <template if:true={showInternDetail}>
+        <lightning-card>
+            <div slot="title">
+                <lightning-icon icon-name="action:new_note" alternative-text="New note" size="small" title="New note"></lightning-icon>  
+                <strong>Intern Form</strong>
+                <button type="submit" class="cancelBtn" onclick={handleCancel}>Cancel</button> 
+                <template if:true={readMode}><button type="submit" class="EditBtn" onclick={handleEdit}>Edit</button></template>
+                <template if:false={readMode}><button type="submit" class="SaveBtn" onclick={handlesave}>Save</button></template>
+            </div>
+            <div class="slds-p-horizontal_small">
+                <div class="slds-p-around_medium search-cls">
+                    <p class="search-text">Intern's Details </p>
+                    <div class="slds-p-around_medium">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <lightning-input label="First Name" value={internDetail.FirstName}  disabled={isReadOnly} onchange={handleFirstNameChange}></lightning-input>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-input label="Last Name" value={internDetail.LastName}  disabled={isReadOnly} onchange={handleLastNameChange}></lightning-input>
+                            </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters">
+                            <!-- Left side: split into 2 halves -->
+                            <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning-input label="Country Code" value="91"  disabled=true onchange={handleCountryCodeChange}></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning-input label="Mobile" value={internDetail.Phone}  disabled={isReadOnly} onchange={handlePhoneNoChange}></lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right side: single input -->
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-input label="Personal Email" value={internDetail.Email}  disabled={isReadOnly} onchange={handleMailChange}></lightning-input>
+                            </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <lightning-combobox label="Gender" value={internDetail.Gender__c} placeholder="Select Gender" options={options} onchange={handleGenderChange}  disabled={isReadOnly}></lightning-combobox>
+                                <!-- <lightning-input label="Gender" value={internDetail.Gender__c}  disabled={isReadOnly}></lightning-input> -->
+                            </div>
+                        </div>
+
+                        <div><p class="heading-Title">ADDRESS INFROMATION</p></div>
+                        <div><strong>CURRENT ADDRESS</strong></div>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <lightning-input label="Street(Address)" value={internDetail.MailingStreet}  disabled={isReadOnly} onchange={handleStreetChange}></lightning-input>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-input label="City" value={internDetail.MailingCity}  disabled={isReadOnly} onchange={handleCityChange}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <lightning-input label="State" value={internDetail.MailingState}  disabled={isReadOnly} onchange={handleStateChange}></lightning-input>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-input label="Country" value={internDetail.MailingCountry}  disabled={isReadOnly} onchange={handleCountryChange}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col"> 
+                                <lightning-input label="Postal Code" value={internDetail.MailingPostalCode}  disabled={isReadOnly} onchange={handlePostalCodeChange}></lightning-input> 
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-form-element">
+                                    <span class="slds-form-element__label">Is Current & Permanent Address Same?</span>
+                                    <div class="slds-form-element__control">
+                                        <lightning-input 
+                                            type="checkbox" 
+                                            checked={internDetail.Is_Current_Permanent_Adress_Same__c} 
+                                            disabled={isReadOnly}
+                                            onchange={handleAddressChange} >
+                                        </lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+
+</template>

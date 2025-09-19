@@ -1,0 +1,91 @@
+.search-cls{
+    margin: 15px;
+    background-color: white;
+    border: 1px solid rgb(236, 236, 236);
+}
+
+.btn1{
+    text-align: right;
+    background-color: #e9f10b;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 5px 12px; 
+}
+
+.search-text{
+    font-weight: bolder;
+    color: black;
+}
+
+.btn-cls{
+    text-align: center;
+}
+.btn{
+    background-color: #e9f10b;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 8px 20px; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.cancelBtn{
+    text-align: right;
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 5px 12px;
+    margin-left: 540px;
+}
+.EditBtn{
+    background-color: #e9f10b;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 5px 12px;
+    margin-left: 10px;
+}
+.heading-Title{
+    background-color: rgb(244, 215, 215);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.SaveBtn{
+    background-color: #e9f10b;
+    color: black;
+    border: none;
+    font-weight: bold;
+    padding: 5px 12px;
+    margin-left: 10px;
+}
