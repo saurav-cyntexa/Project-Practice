@@ -1,15 +1,12 @@
 /**
- * @description     ApexBasicsAssignment class contains solutions for both 
- *                  basic and intermediate coding questions given in the 
- *                  Cyntexa Salesforce development training assignment.
+ * @description     Created this ApexBasicsAssignment to solve the assignment and get hands-on experience with the Apex programming language.
  *
  * @author          Saurav Kumar
  */
 public class ApexBasicsAssignment {
     
     /**
-     * @description     Checks if the provided string is a palindrome 
-     *                  (reads the same forward and backward).
+     * @description     Checks if the provided string is a palindrome (reads the same forward and backward).
      *
      * @author          Saurav Kumar
      * @param str       Input string to be checked.
@@ -48,8 +45,7 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description          Reverses the order of elements in a list.  
-     *                       (Done without using predefined reverse functions.)
+     * @description          Reverses the order of elements in a list without using predefined reverse functions.
      *
      * @author               Saurav Kumar
      * @param inputList      The input list of integers.
@@ -69,13 +65,11 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description                         Converts a 2D list of integers into a map, 
-     *                                      where the key is the row index and the value 
-     *                                      is the list of unique integers in that row.
+     * @description                        Converts a 2D list of integers into a map where the key is the row index and the value is the list of unique integers in that row.
      *
-     * @author                              Saurav Kumar
-     * @param inputList                     A 2D list of integers.
-     * @return Map<Integer, List<Integer>>  Map of row index and corresponding unique integer list.
+     * @author                             Saurav Kumar
+     * @param inputList                    A 2D list of integers.
+     * @return Map<Integer, List<Integer>> Map of row index and corresponding unique integer list.
      */
     public static Map<Integer, List<Integer>> map2DList(List<List<Integer>> inputList) {
         Map<Integer, List<Integer>> resultMap = new Map<Integer, List<Integer>>();
@@ -88,8 +82,7 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description               Removes duplicate values inside each string of a 2D list, 
-     *                            sorts the values, and returns the updated list.
+     * @description               Removes duplicate values inside each string of a 2D list, sorts the values, and returns the updated list.
      *
      * @author                    Saurav Kumar
      * @param inputList           A 2D list of strings (each string contains ';' separated values).
@@ -111,12 +104,12 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description             Rotates the list clockwise (to the right) by k positions.
+     * @description          Rotates the list clockwise (to the right) by k positions.
      *
-     * @author                  Saurav Kumar
-     * @param inputList         The input list of integers.
-     * @param k                 Number of positions to rotate.
-     * @return List<Integer>    The rotated list.
+     * @author               Saurav Kumar
+     * @param inputList      The input list of integers.
+     * @param k              Number of positions to rotate.
+     * @return List<Integer> The rotated list.
      */
     public static List<Integer> rotateClockwise(List<Integer> inputList, Integer k) {
         Integer n = inputList.size();
@@ -133,12 +126,12 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description             Rotates the list anticlockwise (to the left) by k positions.
+     * @description          Rotates the list anticlockwise (to the left) by k positions.
      *
-     * @author                  Saurav Kumar
-     * @param inputList         The input list of integers.
-     * @param k                 Number of positions to rotate.
-     * @return List<Integer>    The rotated list.
+     * @author               Saurav Kumar
+     * @param inputList      The input list of integers.
+     * @param k              Number of positions to rotate.
+     * @return List<Integer> The rotated list.
      */
     public static List<Integer> rotateAntiClockwise(List<Integer> inputList, Integer k) {
         Integer n = inputList.size();
@@ -155,12 +148,11 @@ public class ApexBasicsAssignment {
     
 
     /**
-     * @description             Finds all leaders in the list.  
-     *                          An element is a leader if it is greater than all elements to its right.
+     * @description          Finds all leaders in the list where an element is a leader if it is greater than all elements to its right.
      *
-     * @author                  Saurav Kumar
-     * @param inputList         The input list of integers.
-     * @return List<Integer>    A list of leader elements.
+     * @author               Saurav Kumar
+     * @param inputList      The input list of integers.
+     * @return List<Integer> A list of leader elements.
      */
     public static List<Integer> findLeaders(List<Integer> inputList) {
         List<Integer> leadersList = new List<Integer>{inputList[inputList.size() - 1]};
