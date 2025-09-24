@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Referral_Type__c</fullName>
+    <label>Referral Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer Referral – When an existing customer refers someone.</fullName>
+                <default>false</default>
+                <label>Customer Referral – When an existing customer refers someone.</label>
+            </value>
+            <value>
+                <fullName>Partner Referral – When a business partner (reseller, distributor, ISV, etc.) refers a lead.</fullName>
+                <default>false</default>
+                <label>Partner Referral – When a business partner (reseller, distributor, ISV, etc.) refers a lead.</label>
+            </value>
+            <value>
+                <fullName>Employee Referral – When an internal employee refers a lead.</fullName>
+                <default>false</default>
+                <label>Employee Referral – When an internal employee refers a lead.</label>
+            </value>
+            <value>
+                <fullName>Vendor Referral – When a supplier/vendor organization refers a lead.</fullName>
+                <default>false</default>
+                <label>Vendor Referral – When a supplier/vendor organization refers a lead.</label>
+            </value>
+            <value>
+                <fullName>Affiliate Referral – When affiliates or referral program members refer a lead.</fullName>
+                <default>false</default>
+                <label>Affiliate Referral – When affiliates or referral program members refer a lead.</label>
+            </value>
+            <value>
+                <fullName>Event Referral – When a referral comes through a hosted or sponsored event.</fullName>
+                <default>false</default>
+                <label>Event Referral – When a referral comes through a hosted or sponsored event.</label>
+            </value>
+            <value>
+                <fullName>Other – A catch-all for anything that doesn’t fit predefined categories.</fullName>
+                <default>false</default>
+                <label>Other – A catch-all for anything that doesn’t fit predefined categories.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
