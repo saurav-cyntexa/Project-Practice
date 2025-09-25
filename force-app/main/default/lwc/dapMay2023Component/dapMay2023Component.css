@@ -1,0 +1,16 @@
+.show-count{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.custom-table tbody tr {
+    height: 3rem;
+}
+
+.row-error {
+    background-color: #fbeaea; 
+}
+
+.row-success {
+    background-color: #e8f5e9; 
+}

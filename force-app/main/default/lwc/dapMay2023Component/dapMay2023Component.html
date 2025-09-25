@@ -1,0 +1,121 @@
+<template>
+    <lightning-card title="Dap May 2023" icon-name="custom:custom14">
+        <div class="slds-p-around_medium">
+            <lightning-button variant="brand" label="Create Account Record" title="Primary action"
+                onclick={handleCreateAccount}></lightning-button>
+            <template if:true={showModal}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                    class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <lightning-button-icon icon-name="utility:close" variant="border-filled"
+                            alternative-text="close" title="close"
+                            class="slds-button slds-button_icon slds-modal__close"
+                            onclick={handleCancel}></lightning-button-icon>
+
+                        <!-- <button class="slds-button slds-button_icon slds-modal__close">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Cancel and close</span>
+                        </button> -->
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Create New
+                                Account Record</h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning-record-form 
+                                object-api-name="Account"
+                                columns="2" 
+                                layout-type="Full"
+                                density="comfy" 
+                                onsuccess={handleAccountSuccess}
+                                oncancel={handleCancel}>
+                            </lightning-record-form>
+                        </div>
+                        <!-- <div class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral"
+                                aria-label="Cancel and close">Cancel</button>
+                            <button class="slds-button slds-button_brand">Save</button>
+                        </div> -->
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+
+            <template if:true={contactView}>
+                <section role="dialog" class="slds-modal slds-fade-in-open slds-modal_medium" aria-modal="true" aria-labelledby="modal-heading">
+                    <div class="slds-modal__container">
+
+                        <!-- Close button -->
+                        <lightning-button-icon icon-name="utility:close" variant="border-filled" alternative-text="Close" class="slds-modal__close" onclick={handleCancel}></lightning-button-icon>
+
+                        <!-- Modal Header -->
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading" class="slds-modal__title">Add Contacts</h1>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <lightning-input type="search" label="Search Contacts" onchange={handleSearchChange}></lightning-input>
+                            
+                            <p class="show-count">{selectedCounts} item(s) selected</p>
+
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer custom-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Id</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={contacts} for:item="contact">
+                                        <!-- If contact has AccountId -->
+                                        <template lwc:if={contact.AccountId}>
+                                            <tr key={contact.Id} class="row-error">
+                                                <td>
+                                                    <lightning-icon icon-name="utility:error" alternative-text="error" title="error" size="xx-small"></lightning-icon>
+                                                </td>
+                                                <td>{contact.Name} </td>
+                                                <td>{contact.Email}</td>
+                                                <td>{contact.Phone}</td>
+                                                <td>{contact.Id}</td>
+                                            </tr>
+                                        </template>
+                                        <template lwc:else>
+                                            <tr key={contact.Id} class="row-success">
+                                                <td>
+                                                    <div class="slds-checkbox">
+                                                        <input type="checkbox" checked={contact.checked} id={contact.Id} data-id={contact.Id} onclick={checkboxClicked} />
+                                                        <label class="slds-checkbox__label" for={contact.Id}>
+                                                            <span class="slds-checkbox_faux"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>{contact.Name}</td>
+                                                <td>{contact.Email}</td>
+                                                <td>{contact.Phone}</td>
+                                                <td>{contact.Id}</td>
+                                            </tr>
+                                        </template>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <div class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={handleFinalSave}>Save</button>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+
+        </div>
+    </lightning-card>
+</template>
